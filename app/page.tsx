@@ -1,3 +1,9 @@
+"use client";
+
 export default function Home() {
-  return <> Hello </>;
+  return (
+    <>
+      <p className="pt-100"> </p>
+    </>
+  );
 }
