@@ -1,4 +1,5 @@
 "use client";
+import { SITE_INFO } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -11,7 +12,7 @@ type Item = {
 
 const items: Item[] = [
   {
-    href: "https://www.facebook.com/Bahi.Amman/",
+    href: SITE_INFO.socialLinks.facebook,
     label: "Facebook",
     Icon: (props) => (
       <svg
@@ -25,7 +26,7 @@ const items: Item[] = [
     ),
   },
   {
-    href: "https://www.instagram.com/bahi.amman/?hl=en",
+    href: SITE_INFO.socialLinks.instagram,
     label: "Instagram",
     Icon: (props) => (
       <svg
@@ -39,7 +40,7 @@ const items: Item[] = [
     ),
   },
   {
-    href: "https://maps.app.goo.gl/uCx6T5mhJx2i3eXq7",
+    href: SITE_INFO.mapLocation,
     label: "Find us on Google Maps",
     Icon: (props) => (
       <svg

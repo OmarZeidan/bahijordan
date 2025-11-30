@@ -14,6 +14,7 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 
 import type { Variants } from "framer-motion";
+import { SITE_INFO } from "@/lib/constants";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: 16 },
@@ -249,7 +250,7 @@ export default function SectionHero() {
                   </dt>
                   <dd className="mt-1 font-semibold text-white">
                     <Link
-                      href="https://maps.app.goo.gl/2cbuCiFfJdZuC3586"
+                      href={SITE_INFO.mapLocation}
                       target="_blank"
                       rel="noreferrer"
                       className="underline decoration-white/40 decoration-1 underline-offset-4 transition hover:decoration-white"

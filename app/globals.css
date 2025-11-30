@@ -194,14 +194,17 @@
     @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
   }
   .eyebrow {
-    @apply text-sm uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-2;
+    @apply text-sm uppercase tracking-[0.22em] text-primary-700/80 dark:text-primary-100/70 mb-2;
+  }
+  .eyebrow-small {
+    @apply text-xs uppercase tracking-[0.22em] text-primary-700/80 dark:text-primary-100/70 mb-2;
   }
   .section-heading {
     @apply font-display text-4xl md:text-5xl font-extrabold leading-tight tracking-tight
     text-primary-900 dark:text-primary-100;
   }
   .section-description {
-    @apply max-w-2xl text-base md:text-lg text-primary-800/90 dark:text-primary-100/80
-    leading-relaxed mt-4;
+    @apply max-w-2xl text-base md:text-lg leading-relaxed mt-4
+         text-primary-900/80 dark:text-primary-50/80;
   }
 }
