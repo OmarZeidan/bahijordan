@@ -227,8 +227,8 @@ export default function ContactPage() {
                       Friday
                     </span>
                     <span className="text-primary-900/60 dark:text-primary-100/60 sm:text-right">
-                      7:00 am – Friday's prayers &nbsp;·&nbsp; After prayers –
-                      11:30 pm
+                      7:00 am – Friday&apos;s prayers &nbsp;·&nbsp; After
+                      prayers – 11:30 pm
                     </span>
                   </div>
 
