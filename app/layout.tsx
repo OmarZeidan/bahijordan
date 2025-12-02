@@ -2,7 +2,12 @@ import Footer from "@/components/site-footer";
 import Header from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
-import { futura, righteous } from "./fonts";
+import {
+  bahiArabicBold,
+  bahiArabicRegular,
+  futuraMedium,
+  righteous,
+} from "./fonts";
 import "./globals.css";
 
 const siteName = "Bahi Café";
@@ -58,7 +63,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${futura.variable} ${futura.className} ${righteous.variable} antialiased`}
+        className={`${futuraMedium.variable} ${futuraMedium.className} ${righteous.variable} ${bahiArabicRegular.variable} ${bahiArabicBold.variable} antialiased`}
       >
         <a href="#main-content" className="skip-link">
           Skip to main content

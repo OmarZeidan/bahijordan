@@ -1,4 +1,3 @@
-// lib/parseMenuCsv.ts
 import { MenuRow, MenuSection, MenuItem } from "@/types/menu";
 
 function parseCsv(text: string): MenuRow[] {

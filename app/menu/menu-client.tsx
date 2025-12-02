@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { MenuSection } from "@/types/menu";
 import { useState, useEffect } from "react";
 
@@ -44,18 +45,18 @@ export function MenuClient({ sections }: MenuClientProps) {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-secondary/80 via-card/80 to-card text-foreground">
+    <div className="relative min-h-screen bg-linear-to-br from-secondary/80 via-card/80 to-card text-foreground">
       {/* Layered background design */}
       <div className="fixed inset-0 -z-10">
         {/* Base gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary/80 via-card/80 to-card" />
+        <div className="absolute inset-0 bg-linear-to-br from-secondary/80 via-card/80 to-card" />
 
         {/* Soft wash for depth */}
-        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-card to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-secondary to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-card to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-secondary to-transparent" />
 
         {/* Minimal light streak */}
-        <div className="absolute inset-x-0 top-16 h-24 bg-gradient-to-b from-white/40 to-transparent opacity-70" />
+        <div className="absolute inset-x-0 top-16 h-24 bg-linear-to-b from-white/40 to-transparent opacity-70" />
       </div>
 
       {/* Sticky Side Navigation - Hidden on mobile, visible on lg+ */}
@@ -108,7 +109,7 @@ export function MenuClient({ sections }: MenuClientProps) {
         </header>
 
         {/* All Sections - with nice background container */}
-        <div className="rounded-[40px] border border-border/60 bg-gradient-to-b from-card/90 via-card/80 to-secondary/80 p-6 backdrop-blur-md md:p-10">
+        <div className="rounded-[40px] border border-border/60 bg-linear-to-b from-card/90 via-card/80 to-secondary/80 p-6 backdrop-blur-md md:p-10">
           <div className="space-y-16">
             {sections.map((section, sectionIndex) => (
               <section
@@ -131,12 +132,12 @@ export function MenuClient({ sections }: MenuClientProps) {
                   )}
 
                   <div className="flex items-center justify-between gap-4">
-                    <h2 className="font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+                    <h2 className="font-display text-3xl font-bold tracking-tight text-foreground">
                       {section.titleEn}
                     </h2>
                     {section.titleAr && (
                       <h2
-                        className="font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl"
+                        className="font-ar-bold text-3xl tracking-tight text-foreground"
                         dir="rtl"
                       >
                         {section.titleAr}
@@ -144,7 +145,7 @@ export function MenuClient({ sections }: MenuClientProps) {
                     )}
                   </div>
 
-                  <div className="mt-4 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+                  <div className="mt-4 h-px bg-linear-to-r from-transparent via-border to-transparent" />
                 </div>
 
                 {/* Menu items */}
@@ -155,23 +156,25 @@ export function MenuClient({ sections }: MenuClientProps) {
                     return (
                       <article
                         key={`${section.id}-${item.nameEn}-${item.itemOrder}`}
-                        className={`group/item -mx-4 rounded-[28px] bg-card/70 px-4 py-4 transition duration-300 ${
+                        className={cn(
+                          "group/item -mx-4 rounded-[28px] px-4 py-4 transition duration-300",
                           unavailable
                             ? "opacity-60"
-                            : "hover:bg-gradient-to-r hover:from-secondary/50 hover:via-card/70 hover:to-accent/20"
-                        }`}
+                            : "hover:bg-linear-to-r hover:from-secondary/50 hover:via-card/70 hover:to-accent/20",
+                          item.isSmaller ? "text-xs" : "text-base"
+                        )}
                       >
                         <div className="flex flex-col gap-4 md:grid md:grid-cols-[minmax(0,1.8fr)_auto_minmax(0,1.8fr)] md:items-start md:gap-6">
                           {/* LEFT: English */}
                           <div className="space-y-2">
                             <div className="flex flex-wrap items-center gap-2">
-                              <h3 className="text-sm font-bold text-foreground/90 transition-colors md:text-base group-hover/item:text-primary">
+                              <h3 className="font-bold text-foreground/90 transition-colors group-hover/item:text-primary">
                                 {item.nameEn}
                               </h3>
 
                               {item.badge && (
                                 <span className="inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent">
-                                  ✦ {item.badge}
+                                  {item.badge}
                                 </span>
                               )}
 
@@ -192,11 +195,7 @@ export function MenuClient({ sections }: MenuClientProps) {
                           {/* MIDDLE: Price - Minimal */}
                           <div className="flex items-center justify-center">
                             {item.price && (
-                              <p
-                                className={`font-semibold tabular-nums tracking-widest text-foreground/90 ${
-                                  item.isSmaller ? "text-sm" : "text-base"
-                                }`}
-                              >
+                              <p className="font-semibold tabular-nums tracking-widest text-foreground/90">
                                 {item.price}
                               </p>
                             )}
@@ -205,7 +204,7 @@ export function MenuClient({ sections }: MenuClientProps) {
                           {/* RIGHT: Arabic */}
                           <div className="space-y-2 text-right" dir="rtl">
                             {item.nameAr && (
-                              <h3 className="text-sm font-bold text-foreground/90 md:text-base">
+                              <h3 className="font-ar-bold text-foreground/90">
                                 {item.nameAr}
                               </h3>
                             )}

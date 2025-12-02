@@ -7,10 +7,12 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import MobileMenu from "./mobile-menu";
 import { NavLink } from "./nav-item";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isMenuPage = pathname === "/menu";
   const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -102,10 +104,14 @@ export default function Header() {
             <Button
               asChild
               size="lg"
-              variant="secondary"
-              className="hidden rounded-full px-5 font-semibold md:inline-flex"
+              variant={isMenuPage ? "outline" : "secondary"}
+              className={cn(
+                "hidden rounded-full px-5 font-semibold md:inline-flex"
+              )}
             >
-              <Link href="/menu">Explore Our Menu</Link>
+              <Link href={isMenuPage ? "/" : "/menu"}>
+                {isMenuPage ? "Back to Home" : "Explore Our Menu"}
+              </Link>
             </Button>
             <ThemeToggle />
             <MobileMenu activeId={activeId} pathname={pathname} />

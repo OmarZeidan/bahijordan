@@ -15,8 +15,11 @@
   --color-primary-800: #4f0000;
   --color-primary-900: #320000;
 
-  --font-sans: var(--font-futura);
+  --font-sans: var(--font-futura-medium);
   --font-display: var(--font-righteous);
+
+  --font-ar: var(--font-bahi-arabic-regular);
+  --font-ar-bold: var(--font-bahi-arabic-bold);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -173,6 +176,14 @@
     scroll-margin-top: var(--header-h);
   }
 
+  [dir="rtl"] {
+    font-family: var(--font-bahi-arabic-regular);
+  }
+
+  [dir="rtl"] * {
+    font-family: inherit;
+  }
+
   .skip-link {
     @apply z-[60] rounded-full border border-primary-700 bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-lg;
     position: fixed;
@@ -211,7 +222,8 @@
 
 @layer utilities {
   @keyframes gradient {
-    0%, 100% {
+    0%,
+    100% {
       background-position: 0% 50%;
     }
     50% {

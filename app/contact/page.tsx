@@ -69,8 +69,9 @@ export default function ContactPage() {
                 Send an enquiry
               </h2>
               <p className="text-sm text-primary-800/70 dark:text-primary-100/70">
-                A short message is enough — we&apos;ll follow up with any extra
-                questions.
+                Planning a gathering, have a question about our menu, or just
+                want to say hello? Send us a message; we&apos;d love to hear
+                from you.
               </p>
             </div>
 

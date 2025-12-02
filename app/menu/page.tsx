@@ -3,7 +3,8 @@ import { buildMenuSections } from "@/lib/parseMenuCsv";
 import { MenuSection } from "@/types/menu";
 import { MenuClient } from "./menu-client";
 
-export const revalidate = 60; // cache for 1 minute (tune as you like)
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 async function getMenuSections(): Promise<MenuSection[]> {
   const url = process.env.SHEET_CSV_URL;
