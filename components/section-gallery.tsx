@@ -90,71 +90,70 @@ export default function SectionGallery() {
           </p>
         </div>
 
-        {/* Masonry grid */}
+        {/* Masonry gallery with CSS columns */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.25 }}
-          className="
-            grid auto-rows-[180px] gap-2
-            sm:auto-rows-[200px] sm:gap-3
-            md:grid-cols-6 md:auto-rows-[160px]
-          "
+          className="columns-2 gap-3 md:columns-3 md:gap-4 [column-fill:balance]"
         >
-          {images.map((image, index) => {
-            const gridClass =
-              image.layout === "portrait"
-                ? "md:col-span-2 md:row-span-3" // tall tile
-                : "md:col-span-2 md:row-span-2"; // square tile
+          {images.map((image, index) => (
+            <motion.div
+              key={image.src + index}
+              variants={itemVariants}
+              className="mb-3 break-inside-avoid md:mb-4"
+            >
+              <figure className="group relative overflow-hidden rounded-lg">
+                <div
+                  className={
+                    image.layout === "portrait" ? "aspect-3/4" : "aspect-square"
+                  }
+                >
+                  <div className="relative h-full w-full">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    />
 
-            return (
-              <motion.div
-                key={image.src + index}
-                variants={itemVariants}
-                className={`group relative overflow-hidden ${gridClass}`}
-              >
-                <div className="relative h-full w-full">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                  />
-
-                  {/* Elegant overlay on hover */}
-                  <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    {/* Elegant overlay on hover */}
+                    <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  </div>
                 </div>
-              </motion.div>
-            );
-          })}
+              </figure>
+            </motion.div>
+          ))}
 
           {/* Instagram link box */}
           <motion.div
             variants={itemVariants}
-            className="md:col-span-2 md:row-span-2"
+            className="mb-3 break-inside-avoid md:mb-4"
           >
-            <Link
-              href={SITE_INFO.socialLinks.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex h-full w-full flex-col items-center justify-center gap-3 overflow-hidden bg-linear-to-br from-primary-900 to-primary-950 transition-all duration-500 hover:from-primary-950 hover:to-black dark:from-primary-950 dark:to-black"
-            >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)]" />
+            <div className="aspect-square overflow-hidden rounded-lg">
+              <Link
+                href={SITE_INFO.socialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex h-full w-full flex-col items-center justify-center gap-3 overflow-hidden bg-linear-to-br from-primary-900 to-primary-950 transition-all duration-500 hover:from-primary-950 hover:to-black dark:from-primary-950 dark:to-black"
+              >
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)]" />
 
-              <div className="relative z-10 flex flex-col items-center gap-3">
-                <div className="transition-transform duration-300 group-hover:scale-110">
-                  <InstagramIcon className="size-14 text-white/90" />
+                <div className="relative z-10 flex flex-col items-center gap-3">
+                  <div className="transition-transform duration-300 group-hover:scale-110">
+                    <InstagramIcon className="size-14 text-white/90" />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-base font-medium text-white">See More</p>
+                    <p className="text-sm text-white/60">@bahi.amman</p>
+                  </div>
                 </div>
-                <div className="text-center">
-                  <p className="text-base font-medium text-white">See More</p>
-                  <p className="text-sm text-white/60">@bahi.amman</p>
-                </div>
-              </div>
 
-              <div className="absolute inset-0 bg-linear-to-tr from-primary-700/0 via-primary-600/0 to-primary-500/0 opacity-0 transition-opacity duration-500 group-hover:opacity-20" />
-            </Link>
+                <div className="absolute inset-0 bg-linear-to-tr from-primary-700/0 via-primary-600/0 to-primary-500/0 opacity-0 transition-opacity duration-500 group-hover:opacity-20" />
+              </Link>
+            </div>
           </motion.div>
         </motion.div>
       </div>

@@ -63,8 +63,9 @@ export default function ContactPage() {
         {/* main layout */}
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.85fr)] lg:gap-8">
           {/* LEFT: form section */}
-          <div className="flex flex-col gap-7 border border-primary-900/10 bg-white/40 px-6 py-8 dark:border-white/10 dark:bg-white/2 md:px-8 md:py-10 rounded-xl">
-            <div className="space-y-2">
+          <div className="rounded-3xl border border-primary-200/60 bg-white/80 px-6 py-8 backdrop-blur dark:border-white/10 dark:bg-white/5 md:px-8 md:py-10">
+            <div className="h-px w-12 bg-gradient-to-r from-amber-200 to-primary-500 opacity-90" />
+            <div className="space-y-2 pt-4">
               <h2 className="text-xl font-medium tracking-tight text-primary-900 dark:text-primary-50 md:text-2xl">
                 Send an enquiry
               </h2>
@@ -81,10 +82,11 @@ export default function ContactPage() {
           </div>
 
           {/* RIGHT: immediate contact + what to include */}
-          <div className="flex flex-col gap-6 ">
+          <div className="space-y-6">
             {/* primary contact card */}
-            <div className="flex flex-col gap-6 border border-primary-900/10 bg-white/30 px-6 py-7 dark:border-white/10 dark:bg-white/1.5 md:px-7 md:py-8 rounded-xl">
-              <div className="space-y-2">
+            <div className="rounded-3xl border border-primary-200/60 bg-white/80 px-6 py-7 backdrop-blur dark:border-white/10 dark:bg-white/5 md:px-7 md:py-8">
+              <div className="h-px w-12 bg-linear-to-r from-amber-200 to-primary-500 opacity-90" />
+              <div className="space-y-2 pt-4">
                 <h2 className="text-lg font-medium tracking-tight text-primary-900 dark:text-primary-50">
                   Prefer to talk now?
                 </h2>
@@ -95,10 +97,10 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-4 mt-3">
                 {/* phone */}
-                <div className="flex items-start gap-3.5 border-b border-primary-900/8 pb-4 dark:border-white/8">
-                  <div className="mt-0.5 flex h-9 w-9 items-center justify-center border border-primary-900/10 bg-white/50 dark:border-white/10 dark:bg-white/5 rounded-lg">
+                <div className="flex items-start gap-3.5">
+                  <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-lg border border-primary-900/10 bg-white/50 dark:border-white/10 dark:bg-white/5">
                     <Phone className="h-4 w-4 text-primary-900/70 dark:text-primary-100/70" />
                   </div>
                   <div className="space-y-1">
@@ -120,8 +122,8 @@ export default function ContactPage() {
                 </div>
 
                 {/* email */}
-                <div className="flex items-start gap-3.5 border-b border-primary-900/8 pb-4 dark:border-white/8">
-                  <div className="mt-0.5 flex h-9 w-9 items-center justify-center border border-primary-900/10 bg-white/50 dark:border-white/10 dark:bg-white/5 rounded-lg">
+                <div className="flex items-start gap-3.5">
+                  <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-lg border border-primary-900/10 bg-white/50 dark:border-white/10 dark:bg-white/5">
                     <Mail className="h-4 w-4 text-primary-900/70 dark:text-primary-100/70" />
                   </div>
                   <div className="space-y-1">
@@ -143,8 +145,8 @@ export default function ContactPage() {
                 </div>
 
                 {/* instagram with custom icon */}
-                <div className="flex items-start gap-3.5 border-b border-primary-900/8 pb-4 dark:border-white/8">
-                  <div className="mt-0.5 flex h-9 w-9 items-center justify-center border border-primary-900/10 bg-white/50 dark:border-white/10 dark:bg-white/5 rounded-lg">
+                <div className="flex items-start gap-3.5">
+                  <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-lg border border-primary-900/10 bg-white/50 dark:border-white/10 dark:bg-white/5">
                     <svg
                       viewBox="0 0 256 256"
                       aria-hidden="true"
@@ -177,7 +179,7 @@ export default function ContactPage() {
 
                 {/* location / coverage */}
                 <div className="flex items-start gap-3.5">
-                  <div className="mt-0.5 flex h-9 w-9 items-center justify-center border border-primary-900/10 bg-white/50 dark:border-white/10 dark:bg-white/5 rounded-lg">
+                  <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-lg border border-primary-900/10 bg-white/50 dark:border-white/10 dark:bg-white/5">
                     <MapPin className="h-4 w-4 text-primary-900/70 dark:text-primary-100/70" />
                   </div>
                   <div className="space-y-1">
@@ -201,10 +203,13 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* opening hours */}
-              <div className="mt-2 border border-primary-900/10 bg-white/30 px-5 py-5 text-xs text-primary-800/70 dark:border-white/10 dark:bg-white/[0.02] dark:text-primary-100/70">
-                <div className="mb-4 flex items-center gap-2">
+            {/* opening hours */}
+            <div className="rounded-3xl border border-primary-200/60 bg-white/80 px-5 py-5 text-xs text-primary-800/70 backdrop-blur dark:border-white/10 dark:bg-white/[0.02] dark:text-primary-100/70">
+              <div className="h-px w-12 bg-gradient-to-r from-amber-200 to-primary-500 opacity-90" />
+              <div className="mt-4 space-y-3">
+                <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4 text-primary-900/60 dark:text-primary-200/60" />
                   <h3 className="text-[10px] font-semibold tracking-[0.2em] uppercase text-primary-900/80 dark:text-primary-50/80">
                     Opening hours
