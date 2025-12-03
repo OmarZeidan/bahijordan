@@ -109,10 +109,10 @@ export default function ContactPage() {
                     </p>
                     <p className="text-sm font-medium text-primary-900 dark:text-primary-50">
                       <Link
-                        href="tel:+9627XXXXXXXX"
+                        href={`tel:${SITE_INFO.phoneNumber}`}
                         className="transition-colors hover:text-primary-700 dark:hover:text-primary-200"
                       >
-                        +962 7X XXX XXXX
+                        {SITE_INFO.phoneNumber}
                       </Link>
                     </p>
                     <p className="text-xs text-primary-800/60 dark:text-primary-100/60">
