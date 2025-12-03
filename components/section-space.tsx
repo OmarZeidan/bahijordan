@@ -50,19 +50,32 @@ export default function SectionSpace() {
             to think, read, meet, or simply settle into the quiet.
           </p>
 
-          <div className="grid gap-3 sm:grid-cols-2">
-            {details.map((item) => (
-              <div
+          <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
+            {details.map((item, index) => (
+              <motion.article
                 key={item.title}
-                className="flex h-full flex-col gap-2 rounded-xl border border-primary-100 bg-white px-4 py-3 text-left transition-transform duration-150 hover:-translate-y-px dark:border-white/10 dark:bg-black"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.22, 1, 0.36, 1],
+                  delay: index * 0.08,
+                }}
+                viewport={{ once: true, amount: 0.3 }}
               >
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary-800 dark:text-primary-50">
-                  {item.title}
-                </p>
-                <p className="text-sm leading-relaxed text-primary-900/80 dark:text-primary-50/75">
-                  {item.text}
-                </p>
-              </div>
+                {/* Card Container - Smaller and Calmer */}
+                <div className="relative h-full overflow-hidden rounded-2xl border border-primary-200/50 bg-white/40 p-5 dark:border-white/10 dark:bg-black/20 md:p-6">
+                  {/* Title */}
+                  <h3 className="mb-3 text-base font-semibold tracking-tight text-primary-900 dark:text-primary-50">
+                    {item.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-sm leading-relaxed text-primary-900/70 dark:text-primary-50/65">
+                    {item.text}
+                  </p>
+                </div>
+              </motion.article>
             ))}
           </div>
         </motion.div>

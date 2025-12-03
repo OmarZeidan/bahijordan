@@ -14,29 +14,29 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 
 import type { Variants } from "framer-motion";
-import { SITE_INFO } from "@/lib/constants";
 
 const containerVariants: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      staggerChildren: 0.12,
-      // no "ease" here – keep it simple on the container
-    },
-  },
-};
-
-const itemVariants: Variants = {
   hidden: { opacity: 0, y: 18 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.7,
-      ease: [0.16, 0.84, 0.44, 1], // this is a valid Easing (cubic-bezier)
+      duration: 0.9,
+      staggerChildren: 0.14,
+      when: "beforeChildren",
+      ease: [0.16, 0.84, 0.44, 1],
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.85,
+      ease: [0.22, 0.9, 0.4, 1],
     },
   },
 };
@@ -103,12 +103,13 @@ export default function SectionHero() {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
-          className="relative z-10 mx-auto flex max-w-3xl flex-col space-y-6 text-center"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.45 }}
+          className="relative z-10 mx-auto flex max-w-7xl flex-col space-y-6 text-center"
         >
           <motion.div
             variants={itemVariants}
-            className="mx-auto flex inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-black/20 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.16em] backdrop-blur"
+            className="mx-auto flex items-center justify-center gap-2 rounded-full border border-white/15 bg-black/20 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.16em] backdrop-blur"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
             <p className="text-primary-50/90">
@@ -118,9 +119,9 @@ export default function SectionHero() {
 
           <motion.h1
             variants={itemVariants}
-            className="font-display text-[40px]/[50px] font-black tracking-tight drop-shadow md:text-6xl/[68px] lg:text-7xl/[76px]"
+            className="font-display text-[45px]/[52px] md:text-7xl/[75px] max-w-5xl font-black tracking-tight drop-shadow lg:text-7xl/[76px]"
           >
-            Amman&apos;s golden era,&nbsp;
+            Amman&apos;s golden era,&nbsp; <br className="hidden md:block" />
             <span className="text-amber-200">made for now.</span>
           </motion.h1>
 

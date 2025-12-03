@@ -31,55 +31,75 @@ export default function SectionPhilosophy() {
     <section
       id="philosophy"
       aria-labelledby="philosophy-heading"
-      className="relative border-y border-primary-100/60 bg-white py-16 text-foreground md:py-24 dark:border-white/5 dark:bg-[#090806]"
+      className="relative bg-white py-24 text-foreground md:py-32 lg:py-40 dark:bg-[#090806]"
     >
-      <div className="container-inner relative grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.25 }}
-          className="space-y-5"
-        >
-          <p className="eyebrow">Philosophy</p>
+      <div className="container-inner relative">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16 xl:gap-20">
+          {/* Header Section - Right Side on Desktop, Top on Mobile */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="flex flex-col justify-center space-y-6 lg:order-2 lg:sticky lg:top-24 lg:self-start"
+          >
+            <p className="eyebrow">Philosophy</p>
 
-          <h2 id="philosophy-heading" className="section-heading">
-            A slower rhythm for everyday life.
-          </h2>
+            <h2 id="philosophy-heading" className="section-heading">
+              A slower rhythm for everyday life.
+            </h2>
 
-          <p className="section-description">
-            Bahi is designed to feel quietly familiar: a place where the pace
-            softens, conversations stretch a little longer, and the details fade
-            into the background so you can simply be present at the table.
-          </p>
-        </motion.div>
+            <p className="section-description">
+              Bahi is designed to feel quietly familiar: a place where the pace
+              softens, conversations stretch a little longer, and the details fade
+              into the background so you can simply be present at the table.
+            </p>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.08 }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid gap-4 sm:grid-cols-2"
-        >
-          {principles.map(({ icon: Icon, title, text }) => (
-            <div
-              key={title}
-              className="flex h-full flex-col gap-3 rounded-xl border border-primary-100 bg-white p-4 text-left transition-transform duration-200 hover:-translate-y-0.5 dark:border-white/10 dark:bg-black"
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary-100 text-primary-700 dark:border-white/15 dark:text-primary-100">
-                  <Icon className="h-4 w-4" aria-hidden="true" />
-                </div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary-800 dark:text-primary-50">
-                  {title}
-                </p>
-              </div>
-              <p className="text-sm leading-relaxed text-primary-900/80 dark:text-primary-50/75">
-                {text}
-              </p>
+          {/* Principles Grid - Left Side on Desktop, Bottom on Mobile */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="lg:order-1"
+          >
+            <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
+              {principles.map(({ icon: Icon, title, text }, index) => (
+                <motion.article
+                  key={title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: [0.22, 1, 0.36, 1],
+                    delay: index * 0.08,
+                  }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="group relative"
+                >
+                  {/* Card Container - Smaller and Calmer */}
+                  <div className="relative h-full overflow-hidden rounded-2xl border border-primary-200/50 bg-white/40 p-5 dark:border-white/10 dark:bg-black/20 md:p-6">
+                    {/* Icon - Smaller */}
+                    <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary-100/40 text-primary-700 transition-all duration-300 group-hover:bg-primary-200/50 dark:bg-white/[0.05] dark:text-primary-100 dark:group-hover:bg-white/[0.08]">
+                      <Icon className="h-5 w-5" aria-hidden="true" strokeWidth={1.5} />
+                    </div>
+
+                    {/* Title - Smaller */}
+                    <h3 className="mb-3 text-base font-semibold tracking-tight text-primary-900 dark:text-primary-50">
+                      {title}
+                    </h3>
+
+                    {/* Description - Smaller */}
+                    <p className="text-sm leading-relaxed text-primary-900/70 dark:text-primary-50/65">
+                      {text}
+                    </p>
+                  </div>
+                </motion.article>
+              ))}
             </div>
-          ))}
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
