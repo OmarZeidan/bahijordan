@@ -58,7 +58,7 @@ export default function SectionHero() {
 
   return (
     <section
-      className="group relative isolate flex items-center overflow-hidden bg-linear-to-b from-background via-background/70 to-primary-100/30 text-primary-50"
+      className="group relative isolate flex items-center overflow-hidden bg-linear-to-b from-background via-background/70 to-primary-100/30 text-primary-50 h-svh"
       aria-label="Bahi Café hero section"
     >
       {/* Media background */}
@@ -98,17 +98,17 @@ export default function SectionHero() {
         <div className="absolute -right-20 bottom-10 h-80 w-80 rounded-full bg-amber-300/18 blur-3xl" />
       </motion.div>
 
-      <div className="container-inner relative grid items-center gap-10 pt-[calc(var(--header-h)+26px)] pb-16 md:pt-[calc(var(--header-h)+34px)] md:pb-20 lg:grid-cols-[1.15fr_0.9fr] lg:pt-[calc(var(--header-h)+72px)] lg:pb-24">
+      <div className="container-inner relative grid items-start gap-10 pt-[calc(var(--header-h)+26px)] pb-16 md:pt-[calc(var(--header-h)+34px)] md:pb-20 lg:pt-[calc(var(--header-h)+72px)] lg:pb-24">
         {/* Left: copy + CTAs */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="relative z-10 space-y-6"
+          className="relative z-10 mx-auto flex max-w-3xl flex-col space-y-6 text-center"
         >
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/20 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.16em] backdrop-blur"
+            className="mx-auto flex inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-black/20 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.16em] backdrop-blur"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
             <p className="text-primary-50/90">
@@ -126,7 +126,7 @@ export default function SectionHero() {
 
           <motion.p
             variants={itemVariants}
-            className="max-w-xl text-base leading-relaxed text-primary-50/90 md:text-lg"
+            className="max-w-xl text-base leading-relaxed text-primary-50/90 md:text-lg mx-auto"
           >
             A 70s–80s tribute built on memory: Levantine comfort plates,
             house-baked breads and sandwiches, and tea-led hospitality anchored
@@ -136,7 +136,7 @@ export default function SectionHero() {
 
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap items-center gap-4 pt-2"
+            className="flex flex-wrap items-center justify-center gap-4 pt-2"
           >
             <Button
               asChild
@@ -188,7 +188,7 @@ export default function SectionHero() {
 
           <motion.ul
             variants={itemVariants}
-            className="flex flex-wrap gap-2 pt-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-primary-50/75"
+            className="flex flex-wrap justify-center gap-2 pt-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-primary-50/75"
           >
             {[
               "Khader tea ritual",
@@ -205,93 +205,6 @@ export default function SectionHero() {
             ))}
           </motion.ul>
         </motion.div>
-
-        {/* Right: Inside Bahi card */}
-        <motion.aside
-          initial={{ opacity: 0, y: 26 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.7, ease: "easeOut" }}
-          className="relative z-10 mt-4 h-full w-full max-w-xl justify-self-end"
-        >
-          <div
-            className="
-    pointer-events-none absolute -inset-px rounded-[26px]
-    bg-linear-to-br from-white/18 via-white/4 to-transparent opacity-60
-    dark:from-amber-300/4 dark:via-white/0 dark:to-transparent dark:blur-sm dark:opacity-70
-  "
-          />
-
-          <div
-            className="
-    relative overflow-hidden rounded-3xl border border-white/18 bg-white/7 p-6 backdrop-blur-xl md:p-7
-
-    dark:border-white/5 dark:bg-black/40
-  "
-          >
-            <div className="absolute inset-0 bg-linear-to-br from-white/6 via-transparent to-transparent" />
-            <div className="relative">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.26em] text-primary-50/70">
-                Inside Bahi
-              </p>
-              <h2 className="mt-2 font-display text-2xl font-extrabold text-white md:text-[26px]">
-                Hospitality with a retro accent.
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-primary-50/82">
-                From the first pour of tea to the last plate on the table,
-                service is slow on purpose and attentive without rushing you.
-                Regulars know their order, newcomers are guided through the menu
-                like guests at home.
-              </p>
-
-              <dl className="mt-5 grid gap-3 text-sm text-primary-50/88">
-                <div className="rounded-xl border border-white/12 bg-white/6 px-3 py-3">
-                  <dt className="text-[11px] uppercase tracking-[0.2em] text-primary-50/60">
-                    Location
-                  </dt>
-                  <dd className="mt-1 font-semibold text-white">
-                    <Link
-                      href={SITE_INFO.mapLocation}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="underline decoration-white/40 decoration-1 underline-offset-4 transition hover:decoration-white"
-                    >
-                      Shmeisani, Amman
-                      <span className="sr-only"> (opens in Google Maps)</span>
-                    </Link>
-                  </dd>
-                </div>
-
-                <div className="rounded-xl border border-white/12 bg-white/6 px-3 py-3">
-                  <dt className="text-[11px] uppercase tracking-[0.2em] text-primary-50/60">
-                    Specialty
-                  </dt>
-                  <dd className="mt-1 font-semibold text-white">
-                    Khader tea & seasonal brews
-                  </dd>
-                </div>
-
-                <div className="rounded-xl border border-white/12 bg-white/6 px-3 py-3">
-                  <dt className="text-[11px] uppercase tracking-[0.2em] text-primary-50/60">
-                    Atmosphere
-                  </dt>
-                  <dd className="mt-1 font-semibold text-white">
-                    Copper, terrazzo, and soft warm lighting echoing Amman’s
-                    golden era
-                  </dd>
-                </div>
-
-                <div className="rounded-xl border border-white/12 bg-white/6 px-3 py-3">
-                  <dt className="text-[11px] uppercase tracking-[0.2em] text-primary-50/60">
-                    Experience
-                  </dt>
-                  <dd className="mt-1 font-semibold text-white">
-                    Service paced to breathe ... attentive, never rushed
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-        </motion.aside>
       </div>
 
       {/* Only for the sake of active items on the header -- see site-header.tsx */}
