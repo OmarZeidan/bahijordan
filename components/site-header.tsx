@@ -104,12 +104,11 @@ export default function Header() {
             <Button
               asChild
               size="lg"
-              variant={isMenuPage ? "outline" : "secondary"}
               className={cn(
                 "hidden rounded-full px-5 font-semibold md:inline-flex"
               )}
             >
-              <Link href={isMenuPage ? "/" : "/menu"}>
+              <Link href={isMenuPage ? "/" : "/menu"} prefetch={true}>
                 {isMenuPage ? "Back to Home" : "Explore Our Menu"}
               </Link>
             </Button>

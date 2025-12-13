@@ -3,323 +3,205 @@
 import { cn } from "@/lib/utils";
 import { MenuSection } from "@/types/menu";
 import { Clock } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 interface MenuClientProps {
   sections: MenuSection[];
 }
 
 export function MenuClient({ sections }: MenuClientProps) {
-  const [activeSection, setActiveSection] = useState(sections[0]?.id || "");
+  const validSections = sections.filter((section) => section.items.length > 0);
+  const [activeTab, setActiveTab] = useState(validSections[0]?.id || "");
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sectionElements = sections.map((section) =>
-        document.getElementById(section.id)
-      );
-
-      const scrollPosition = window.scrollY + 150;
-
-      for (let i = sectionElements.length - 1; i >= 0; i--) {
-        const element = sectionElements[i];
-        if (element && element.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i].id);
-          break;
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [sections]);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 120;
-      const elementPosition = element.offsetTop - offset;
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    // Scroll to top smoothly to show tabs and content
+    setTimeout(() => {
       window.scrollTo({
-        top: elementPosition,
-        behavior: "smooth",
+        top: 0,
+        behavior: "smooth"
       });
-    }
+    }, 100);
   };
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground">
-      {/* Simplified clean background */}
-      <div className="fixed inset-0 -z-10 bg-background" />
-
-      {/* Floating Dot Navigation - Desktop only */}
-      <nav className="fixed right-8 top-1/2 z-30 hidden -translate-y-1/2 lg:block">
-        <div className="flex flex-col gap-3">
-          {sections
-            .filter((section) => section.items.length > 0)
-            .map((section) => (
-              <button
-                key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className="group relative flex items-center"
-                aria-label={`Go to ${section.titleEn}`}
-              >
-                {/* Dot */}
-                <div
-                  className={cn(
-                    "h-2.5 w-2.5 rounded-full transition-all duration-300",
-                    activeSection === section.id
-                      ? "bg-accent ring-4 ring-accent/20"
-                      : "bg-border hover:bg-accent/50"
-                  )}
-                />
-
-                {/* Tooltip */}
-                <div
-                  className={cn(
-                    "pointer-events-none absolute right-full mr-4 whitespace-nowrap rounded-lg bg-card px-3 py-1.5 text-sm font-medium text-foreground opacity-0 shadow-lg ring-1 ring-border transition-opacity duration-200 group-hover:opacity-100"
-                  )}
-                >
-                  {section.titleEn}
-                </div>
-              </button>
-            ))}
-        </div>
+    <div className="relative min-h-screen pt-(--header-h)">
+      {/* Quick navigation circles - right side */}
+      <nav className="fixed right-4 top-1/2 z-20 hidden -translate-y-1/2 flex-col gap-3 lg:flex">
+        {validSections.map((section) => (
+          <button
+            key={section.id}
+            onClick={() => handleTabChange(section.id)}
+            className={cn(
+              "group relative h-3 w-3 rounded-full transition-all duration-200",
+              activeTab === section.id
+                ? "bg-primary ring-4 ring-primary/20"
+                : "bg-border hover:bg-primary/50 hover:ring-2 hover:ring-primary/10"
+            )}
+            aria-label={`Go to ${section.titleEn}`}
+          >
+            <span className="absolute right-6 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-foreground px-2 py-1 text-xs font-medium text-background opacity-0 transition-opacity group-hover:opacity-100">
+              {section.titleEn}
+            </span>
+          </button>
+        ))}
       </nav>
 
-      {/* Bottom Navigation Bar - Mobile only */}
-      <nav className="fixed bottom-0 left-0 right-0 z-30 border-t border-border/40 bg-card/95 backdrop-blur-md lg:hidden">
-        <div className="hide-scrollbar flex gap-2 overflow-x-auto px-4 py-3">
-          {sections
-            .filter((section) => section.items.length > 0)
-            .map((section) => (
-              <button
-                key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className={cn(
-                  "shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-200",
-                  activeSection === section.id
-                    ? "bg-accent text-accent-foreground shadow-sm"
-                    : "bg-secondary/50 text-muted-foreground"
-                )}
-              >
-                <span className="whitespace-nowrap">{section.titleEn}</span>
-              </button>
-            ))}
+      {/* Minimal header */}
+      <header className="relative border-b border-border/50 py-8">
+        <div className="mx-auto max-w-5xl px-4 md:px-6">
+          <p className="mb-2 text-center text-xs uppercase tracking-widest text-muted-foreground">
+            Bahi Café
+          </p>
+          <h1 className="text-center font-display text-3xl font-light tracking-tight text-foreground md:text-4xl">
+            Menu
+          </h1>
         </div>
-      </nav>
+      </header>
 
-      <main className="relative mx-auto max-w-5xl px-4 pb-24 pt-12 md:px-6 lg:pb-32 lg:px-8">
-        {/* Hero header - Simplified */}
-        <header className="mb-16 text-center">
-          <div className="mx-auto max-w-2xl">
-            <div className="eyebrow-small mb-4 text-center">Bahi Café</div>
-
-            <h1 className="mb-6 font-display text-5xl font-bold leading-tight tracking-tight text-primary md:text-6xl">
-              Our Menu
-            </h1>
-
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              Experience authentic flavors crafted with passion. Our menu is
-              carefully curated to bring you the finest selection of beverages
-              and treats.
-            </p>
-          </div>
-        </header>
-
-        {/* Menu Sections */}
-        <div className="space-y-20">
-          {sections
-            .filter((section) => section.items.length > 0)
-            .map((section) => (
-              <section
-                key={section.id}
-                id={section.id}
-                className="scroll-mt-32"
-              >
-                {/* Section container with background */}
-                <div className="relative overflow-hidden rounded-3xl bg-[#f5f0eb] p-6 shadow-sm ring-1 ring-border/50 md:p-8 dark:bg-[#2f2727]">
-                  {/* Background watermark for section */}
-                  <div className="pointer-events-none absolute left-1/2 top-4 flex -translate-x-1/2 overflow-hidden">
-                    <div className="flex flex-col items-center gap-1 -rotate-6">
-                      <span className="font-display text-3xl font-bold text-foreground/4 dark:text-foreground/6 md:text-4xl lg:text-5xl">
-                        {section.titleEn.split(" ")[0]}
-                      </span>
-                      {section.titleAr && (
-                        <span
-                          className="font-ar-bold text-2xl text-foreground/4 dark:text-foreground/6 md:text-3xl lg:text-4xl"
-                          dir="rtl"
-                        >
-                          {section.titleAr.split(" ")[0]}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Section header - Cleaner design */}
-                  <div className="relative mb-8">
-                    {section.eyebrowEn && (
-                      <div className="mb-3 flex items-center justify-between gap-4">
-                        <span className="eyebrow-small">
-                          {section.eyebrowEn}
-                        </span>
-                        {section.eyebrowAr && (
-                          <span className="eyebrow-small" dir="rtl">
-                            {section.eyebrowAr}
-                          </span>
-                        )}
-                      </div>
+      {/* Tabs Navigation */}
+      <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
+        <div className="sticky top-(--header-h) z-10 border-b border-border/50 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
+          <div className="mx-auto max-w-5xl px-4 md:px-6">
+            <div className="overflow-x-auto scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
+              <TabsList className="inline-flex h-12 w-auto min-w-full items-center justify-start gap-0 bg-transparent md:w-full">
+                {validSections.map((section) => (
+                  <TabsTrigger
+                    key={section.id}
+                    value={section.id}
+                    className={cn(
+                      "relative shrink-0 flex-none border-b-2 border-transparent bg-transparent px-4 py-3",
+                      "text-sm font-medium text-muted-foreground transition-colors",
+                      "hover:text-foreground",
+                      "data-[state=active]:border-primary data-[state=active]:text-foreground",
+                      "focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:shadow-none"
                     )}
+                  >
+                    <span className="whitespace-nowrap">
+                      {section.titleEn}
+                    </span>
+                    {section.titleAr && (
+                      <span
+                        className="ml-2 whitespace-nowrap font-ar text-xs opacity-60"
+                        dir="rtl"
+                      >
+                        {section.titleAr}
+                      </span>
+                    )}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
+          </div>
+        </div>
 
-                    <div className="mb-4 flex items-center justify-between gap-6">
-                      <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
-                        {section.titleEn}
-                      </h2>
-                      {section.titleAr && (
-                        <h2
-                          className="font-ar-bold text-3xl text-foreground md:text-4xl"
-                          dir="rtl"
-                        >
-                          {section.titleAr}
-                        </h2>
+        <main className="mx-auto w-full max-w-5xl px-4 py-8 md:px-6 md:py-12">
+          {validSections.map((section) => (
+            <TabsContent
+              key={section.id}
+              value={section.id}
+              className="mt-0 focus-visible:outline-none"
+            >
+              {/* Menu items - flat & minimal */}
+              <div className="divide-y divide-border/70 rounded-lg border border-border/40 bg-background/90 p-6 backdrop-blur-sm md:p-8">
+                {section.items.map((item, idx) => {
+                  const unavailable = !item.available;
+
+                  return (
+                    <article
+                      key={`${section.id}-${item.nameEn}-${item.itemOrder}`}
+                      className={cn(
+                        "group/item -mx-2 -my-1 rounded-md px-2 py-6 transition-all duration-200",
+                        "hover:bg-primary/3  hover:shadow-sm",
+                        unavailable && "opacity-50",
+                        idx === 0 && "pt-0"
                       )}
-                    </div>
-
-                    <div className="h-px bg-linear-to-r from-transparent via-border to-transparent" />
-                  </div>
-
-                  {/* Menu items - Simpler design */}
-                  <div className="space-y-5">
-                    {section.items.map((item) => {
-                      const unavailable = !item.available;
-
-                      return (
-                        <article
-                          key={`${section.id}-${item.nameEn}-${item.itemOrder}`}
-                          className={cn(
-                            "group/item rounded-xl p-5 transition-all duration-300 md:p-6",
-                            unavailable
-                              ? "opacity-60"
-                              : "hover:bg-white/50 hover:shadow-sm dark:hover:bg-black/20",
-                            item.isSmaller && "py-4 md:py-4"
-                          )}
-                        >
-                          <div className="flex flex-col gap-3">
-                            {/* Names and badges */}
-                            <div className="space-y-2">
-                              {/* English name and badges */}
-                              <div className="flex flex-wrap items-center gap-2">
-                                <h3
-                                  className={cn(
-                                    "font-bold leading-tight text-foreground transition-colors group-hover/item:text-primary",
-                                    item.isSmaller
-                                      ? "text-base"
-                                      : "text-lg md:text-xl"
-                                  )}
-                                >
-                                  {item.nameEn}
-                                </h3>
-
-                                {item.badge && (
-                                  <span className="inline-flex items-center rounded-full border border-accent/50 bg-accent/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent">
-                                    {item.badge}
-                                  </span>
-                                )}
-
-                                {unavailable && (
-                                  <span className="inline-flex items-center rounded-full border border-muted-foreground/30 bg-muted/50 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                                    Sold Out
-                                  </span>
-                                )}
-                              </div>
-
-                              {/* Arabic name */}
-                              {item.nameAr && (
-                                <h3
-                                  className={cn(
-                                    "font-ar-bold leading-tight text-foreground/90",
-                                    item.isSmaller
-                                      ? "text-base"
-                                      : "text-lg md:text-xl"
-                                  )}
-                                  dir="rtl"
-                                >
-                                  {item.nameAr}
-                                </h3>
-                              )}
-                            </div>
-
-                            {/* Descriptions */}
-                            {(item.descEn || item.descAr) && (
-                              <div className="space-y-2">
-                                {item.descEn && (
-                                  <p
-                                    className={cn(
-                                      "leading-relaxed text-muted-foreground",
-                                      item.isSmaller ? "text-xs" : "text-sm"
-                                    )}
-                                  >
-                                    {item.descEn}
-                                  </p>
-                                )}
-
-                                {item.descAr && (
-                                  <p
-                                    className={cn(
-                                      "leading-relaxed text-muted-foreground",
-                                      item.isSmaller ? "text-xs" : "text-sm"
-                                    )}
-                                    dir="rtl"
-                                  >
-                                    {item.descAr}
-                                  </p>
-                                )}
-                              </div>
+                    >
+                      <div className="flex items-start justify-between gap-4">
+                        {/* Left: Title & Description */}
+                        <div className="min-w-0 flex-1 space-y-1.5">
+                          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                            <h3 className="font-medium text-primary-600 dark:text-foreground">
+                              {item.nameEn} -
+                            </h3>
+                            {item.nameAr && (
+                              <span
+                                className="font-ar text-sm text-foreground"
+                                dir="rtl"
+                              >
+                                {item.nameAr}
+                              </span>
                             )}
-
-                            {/* Price - Bottom aligned with dashed line */}
-                            {item.price && (
-                              <div className="flex items-center gap-3 pt-2">
-                                <div className="h-px flex-1 border-b border-dashed border-border/60" />
-                                <div className="flex items-center gap-1.5 rounded-lg bg-accent/5 px-3 py-1.5 dark:bg-accent/10">
-                                  <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                                    JD
-                                  </span>
-                                  <span className="text-xl font-bold tabular-nums text-accent">
-                                    {item.price}
-                                  </span>
-                                </div>
-                              </div>
+                            {item.badge && (
+                              <span className="inline-flex items-center rounded-sm bg-accent/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-accent">
+                                {item.badge}
+                              </span>
+                            )}
+                            {unavailable && (
+                              <span className="inline-flex items-center rounded-sm bg-muted/50 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+                                Unavailable
+                              </span>
                             )}
                           </div>
-                        </article>
-                      );
-                    })}
-                  </div>
-                </div>
-              </section>
-            ))}
-        </div>
 
-        <footer className="mx-auto max-w-3xl text-center text-xs text-primary-800/70 dark:text-primary-100/60 space-y-3 mt-6">
-          <p>
-            Prices are in Jordanian Dinar. Please ask our team about allergens
-            or dietary preferences.
-          </p>
+                          {(item.descEn || item.descAr) && (
+                            <div className="space-y-6 text-sm text-muted-foreground mt-4">
+                              {item.descEn && (
+                                <p className="leading-relaxed">{item.descEn}</p>
+                              )}
+                              {item.descAr && (
+                                <p
+                                  className="font-ar leading-relaxed"
+                                  dir="rtl"
+                                >
+                                  {item.descAr}
+                                </p>
+                              )}
+                            </div>
+                          )}
+                        </div>
 
-          <div>
-            <p className="uppercase font-semibold text-primary-900 dark:text-primary-200 tracking-wide flex items-center justify-center gap-1.5">
-              <Clock className="h-3.5 w-3.5 opacity-80" />
-              Opening Hours
+                        {/* Right: Price */}
+                        {item.price && (
+                          <div className="shrink-0 text-right">
+                            <p className="font-medium tabular-nums text-foreground">
+                              {item.price}{" "}
+                              <span className="text-xs text-muted-foreground">
+                                JD
+                              </span>
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            </TabsContent>
+          ))}
+
+          {/* Footer */}
+          <footer className="mt-16 space-y-6 border-t border-border/40 pt-8 text-center">
+            <p className="text-xs text-muted-foreground">
+              All prices in Jordanian Dinar · Ask our team about allergens or
+              dietary preferences
             </p>
 
-            <ul className="mt-2 space-y-1">
-              <li>Saturday – Thursday: 7:00 AM – 11:30 PM</li>
-              <li> Friday: 7:00 AM – prayer time </li>
-              <li> Friday: after Friday’s prayer – 11:30 PM </li>
-              <li>Sunday: 7:00 AM – 12:30 AM</li>
-            </ul>
-          </div>
-        </footer>
-      </main>
+            <div className="space-y-3">
+              <div className="flex items-center justify-center gap-2 text-xs font-medium uppercase tracking-wider text-foreground">
+                <Clock className="h-3.5 w-3.5" />
+                <span>Opening Hours</span>
+              </div>
+              <div className="space-y-1 text-xs text-muted-foreground">
+                <p>Saturday – Thursday: 7:00 AM – 11:30 PM</p>
+                <p>Friday: 7:00 AM – prayer time · After prayer – 11:30 PM</p>
+                <p>Sunday: 7:00 AM – 12:30 AM</p>
+              </div>
+            </div>
+          </footer>
+        </main>
+      </Tabs>
     </div>
   );
 }
