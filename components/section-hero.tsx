@@ -129,10 +129,11 @@ export default function SectionHero() {
             variants={itemVariants}
             className="max-w-xl text-base leading-relaxed text-primary-50/90 md:text-lg mx-auto"
           >
-            A 70s–80s tribute built on memory: Levantine comfort plates,
-            house-baked breads and sandwiches, and tea-led hospitality anchored
-            by khader (شاي مخدر). Terrazzo, copper, and soft light invite you to
-            slow down.
+            A tribute to the 1970s and 1980s, built on memory and everyday
+            rituals: Levantine comfort plates, house-baked breads and
+            sandwiches, and tea that lingers longer than planned, anchored by
+            khader tea (شاي مخدر). Terrazzo, copper, and soft light carry that
+            rhythm into the space, shaping a calm, grounded atmosphere.
           </motion.p>
 
           <motion.div

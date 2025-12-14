@@ -61,7 +61,7 @@ export default function SectionConnect() {
             We’re happy to hear from you.
           </h2>
           <p className="section-description">
-            Questions, feedback, or a kind word—reach us anytime. Use the
+            Questions, feedback, or a kind word, reach us anytime. Use the
             details below or drop by to say hello.
           </p>
 

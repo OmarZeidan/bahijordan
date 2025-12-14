@@ -7,22 +7,22 @@ const principles = [
   {
     icon: Heart,
     title: "Hospitality rooted in home",
-    text: "Warmth that feels like gathering around the table — friendly welcomes, quiet smiles, and the comfort of shared stories over food.",
+    text: "Welcomes are warm and natural. Service is attentive, human, and unforced, leaving space for conversation, laughter, and shared moments around the table.",
   },
   {
     icon: Timer,
-    title: "Time for savoring",
-    text: "Meals, moments, conversations — unhurried, slow-brewed khader tea, un-rushed lingering, and plates meant to be shared over good company.",
+    title: "Food meant to be shared",
+    text: "Plates arrive to be passed and revisited. Drinks and desserts draw from familiar local flavors, from khader tea to sweets meant to be shared at the table.",
   },
   {
     icon: Sparkles,
-    title: "Craft you sense, not just see",
-    text: "Soft copper tones, hand-finished wood, careful plating, subtle lighting — gentle touches that bring the room to life without shouting for attention.",
+    title: "Craft you feel",
+    text: "Materials and finishes are chosen for durability and use. Copper, wood, terrazzo, careful plating, and light come together with intention.",
   },
   {
     icon: Waves,
-    title: "Rhythm & ease",
-    text: "Clear paths, open seating, calm corners and soft background music — a space where movement, conversation and comfort flow effortlessly.",
+    title: "Ease in motion",
+    text: "The room is arranged for movement, overlap, and gathering. Easy flow between tables, open seating, and music that stays present but never dominant, keeping the space active and connected.",
   },
 ];
 
@@ -46,13 +46,13 @@ export default function SectionPhilosophy() {
             <p className="eyebrow">Philosophy</p>
 
             <h2 id="philosophy-heading" className="section-heading">
-              A slower rhythm for everyday life.
+              Built around the table.
             </h2>
 
             <p className="section-description">
-              Bahi is designed to feel quietly familiar: a place where the pace
-              softens, conversations stretch a little longer, and the details fade
-              into the background so you can simply be present at the table.
+              Everything at Bahi is shaped around the table and the people it
+              brings together. Shared food, familiar rituals, and the natural
+              pull of good company guide how the café works, day after day.
             </p>
           </motion.div>
 
@@ -82,7 +82,11 @@ export default function SectionPhilosophy() {
                   <div className="relative h-full overflow-hidden rounded-2xl border border-primary-200/50 bg-white/40 p-5 dark:border-white/10 dark:bg-black/20 md:p-6">
                     {/* Icon - Smaller */}
                     <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary-100/40 text-primary-700 transition-all duration-300 group-hover:bg-primary-200/50 dark:bg-white/[0.05] dark:text-primary-100 dark:group-hover:bg-white/[0.08]">
-                      <Icon className="h-5 w-5" aria-hidden="true" strokeWidth={1.5} />
+                      <Icon
+                        className="h-5 w-5"
+                        aria-hidden="true"
+                        strokeWidth={1.5}
+                      />
                     </div>
 
                     {/* Title - Smaller */}

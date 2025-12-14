@@ -82,11 +82,11 @@ export default function SectionGallery() {
       <div className="mx-auto max-w-6xl px-4">
         {/* Eyebrow & heading */}
         <div className="mb-10 space-y-3">
-          <p className="eyebrow">The Space</p>
+          <p className="eyebrow">The Gallery</p>
           <h2 className="section-heading">Inside Bahi</h2>
           <p className="section-description">
-            Corners, counters, and in-between moments — a glimpse of how the
-            room holds quiet work, slow mornings, and late conversations.
+            Corners, counters, and in-between moments, a glimpse of how the room
+            holds quiet work, slow mornings, and late conversations.
           </p>
         </div>
 

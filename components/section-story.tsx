@@ -51,34 +51,32 @@ export default function SectionStory() {
                 </h2>
 
                 <p className="max-w-2xl text-[15px] leading-relaxed text-primary-900/85 dark:text-primary-50/85">
-                  Bahi Café was created as a tribute to Amman’s golden era — the
+                  Bahi Café was created as a tribute to Amman’s golden era, the
                   warmth, elegance, and understated charm of the 1970s and
-                  1980s. Those decades left behind a memory of a city rich with
-                  character: terrazzo foyers, aged copper details, quiet
-                  hospitality, and a rhythm of life that moved slower, more
-                  intentionally. Bahi grew from that memory, grounded firmly in
-                  the present, yet shaped by what the city once felt like.
+                  1980s. Those decades left behind a city rich with character:
+                  terrazzo foyers, aged copper details, quiet hospitality, and a
+                  rhythm of life shaped by intention rather than speed. Bahi
+                  grew from that memory, grounded firmly in the present, yet
+                  informed by what the city once felt like.
                 </p>
 
                 <p className="max-w-2xl text-[15px] leading-relaxed text-primary-900/85 dark:text-primary-50/80">
-                  When we opened in 2024, the goal wasn’t to replicate the past
-                  — but to honor its atmosphere. We designed a space where light
-                  falls softly across custom pieces, where textures feel
-                  familiar, and where the pace encourages you to settle in
-                  rather than hurry through. Whether you’re here to read, to
-                  meet someone quietly, or simply to pause between the day’s
-                  moments, Bahi is meant to feel lived-in, comforting, and
-                  unmistakably Ammani.
+                  When we opened in 2024, the goal was not to replicate the
+                  past, but to honor its atmosphere. We designed a space where
+                  light falls softly across custom pieces, where textures feel
+                  familiar, and where the experience encourages you to stay
+                  rather than pass through. Whether you are here to read, meet
+                  someone quietly, or pause between moments, Bahi is meant to
+                  feel lived in, comforting, and unmistakably Ammani.
                 </p>
 
                 <p className="max-w-2xl text-[15px] leading-relaxed text-primary-900/85 dark:text-primary-50/80">
-                  The heartbeat of the café is Khader tea — brewed slow, poured
-                  with care, and meant to anchor the table the way it once
-                  anchored homes across the city. Playlists drift between old
-                  recordings and contemporary sounds, echoing the blend of
-                  nostalgia and modernity that defines Bahi. Here, time
-                  stretches a little, conversations last longer, and afternoons
-                  often slip gently into evening.
+                  At the heart of the café is khader tea, brewed slowly, poured
+                  with care, and meant to anchor the table as it once anchored
+                  homes across the city. Music moves between old recordings and
+                  contemporary sounds, reflecting the balance between nostalgia
+                  and modernity that defines Bahi. Here, conversations tend to
+                  linger, and afternoons often ease naturally into evening.
                 </p>
               </div>
 

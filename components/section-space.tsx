@@ -6,20 +6,20 @@ import Image from "next/image";
 export default function SectionSpace() {
   const details = [
     {
-      title: "Morning light",
-      text: "Quiet tables, notebooks, first coffees, and soft playlists that stay in the background.",
+      title: "Morning",
+      text: "Coffee orders stack up early, familiar faces settle into their tables, and the room fills gradually with conversation and movement.",
     },
     {
-      title: "Afternoon rhythm",
-      text: "A gentle hum of conversation, working lunches, and long, steady pours of tea and coffee.",
+      title: "Midday",
+      text: "Sunlight moves across the room as tables fill and clear. Comfort plates circulate, sandwiches are passed across the table, and meals stretch beyond their original plan.",
     },
     {
-      title: "Evening glow",
-      text: "Dimmed lights, warmer tones, and a slower cadence for desserts, last sips, and unhurried talk.",
+      title: "Afternoon",
+      text: "The light softens and stretches, visits linger, desserts begin to appear, and tea becomes the anchor of the table.",
     },
     {
-      title: "At the counter",
-      text: "Espresso pulled to order, tea brewed with care, and a front-row seat to the daily flow.",
+      title: "Evening",
+      text: "Lower light, warmer tones, last coffees, sweets, and conversations that carry on without urgency.",
     },
   ];
 
@@ -41,13 +41,20 @@ export default function SectionSpace() {
           <p className="eyebrow">The Space</p>
 
           <h2 id="space-heading" className="section-heading">
-            A calm interior shaped by light and texture.
+            A room that holds the day.
           </h2>
 
           <p className="section-description">
-            From the gentle brightness of morning to the warm tones of evening,
-            Bahi shifts throughout the day, a steady, lived-in room with corners
-            to think, read, meet, or simply settle into the quiet.
+            Bahi is designed as a space that moves with the day. Mornings bring
+            light and movement, afternoons gather energy around shared tables,
+            and evenings settle into warmth without losing their pulse. It is a
+            room made for people, conversation, and return visits.
+          </p>
+          <p className="section-description text-base">
+            Terrazzo floors, copper details, and layered textures give the space
+            weight and familiarity. The counter remains part of the room, with
+            coffee pulled to order, tea brewed throughout the day, and the
+            rhythm of the café always visible.
           </p>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
