@@ -48,15 +48,51 @@ export function MenuClient({ sections }: MenuClientProps) {
         ))}
       </nav>
 
-      {/* Minimal header */}
-      <header className="relative border-b border-border/50 py-8">
-        <div className="mx-auto max-w-5xl px-4 md:px-6">
-          <p className="mb-2 text-center text-xs uppercase tracking-widest text-muted-foreground">
-            Bahi Café
-          </p>
-          <h1 className="text-center font-display text-3xl font-light tracking-tight text-foreground md:text-4xl">
-            Menu
+      {/* Professional header */}
+      <header className="relative overflow-hidden border-b border-border/40 bg-gradient-to-b from-background via-background/98 to-background/95 py-12 md:py-16">
+        {/* SVG Background Pattern */}
+        <div className="absolute inset-0">
+          <svg className="h-full w-full opacity-[0.04] dark:opacity-[0.015]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="cafe-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                {/* Coffee beans inspired organic shapes */}
+                <ellipse cx="20" cy="20" rx="3" ry="5" fill="black" transform="rotate(45 20 20)" className="dark:fill-white" />
+                <ellipse cx="80" cy="40" rx="3" ry="5" fill="black" transform="rotate(-30 80 40)" className="dark:fill-white" />
+                <ellipse cx="50" cy="70" rx="3" ry="5" fill="black" transform="rotate(60 50 70)" className="dark:fill-white" />
+                <ellipse cx="30" cy="90" rx="3" ry="5" fill="black" transform="rotate(15 30 90)" className="dark:fill-white" />
+                <ellipse cx="70" cy="85" rx="3" ry="5" fill="black" transform="rotate(-45 70 85)" className="dark:fill-white" />
+                {/* Delicate connecting lines */}
+                <path d="M 20 20 Q 50 35 80 40" stroke="black" strokeWidth="0.5" fill="none" opacity="0.3" className="dark:stroke-white" />
+                <circle cx="50" cy="35" r="1" fill="black" opacity="0.4" className="dark:fill-white" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#cafe-pattern)" />
+          </svg>
+        </div>
+
+        {/* Subtle decorative gradients */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(var(--primary-rgb,120,113,108)/0.03),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(var(--primary-rgb,120,113,108)/0.02),transparent_50%)]" />
+
+        <div className="relative mx-auto max-w-5xl px-4 md:px-6">
+          {/* Brand name */}
+          <div className="mb-4 flex items-center justify-center gap-2">
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-border" />
+            <p className="text-center text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground/80">
+              Bahi Café
+            </p>
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-border" />
+          </div>
+
+          {/* Main title */}
+          <h1 className="text-center font-display text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl">
+            Our Menu
           </h1>
+
+          {/* Subtitle */}
+          <p className="mx-auto mt-3 max-w-md text-center text-sm leading-relaxed text-muted-foreground md:text-base">
+            Crafted with care, served with passion
+          </p>
         </div>
       </header>
 
