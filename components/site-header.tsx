@@ -57,7 +57,9 @@ export default function Header() {
   }, [isHome]); // don't include activeId to keep observer stable
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50">
+    <header
+      className={cn("", !isMenuPage && "fixed left-0 right-0 top-0 z-50")}
+    >
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-primary-600/0 via-primary-600/50 to-primary-600/0"

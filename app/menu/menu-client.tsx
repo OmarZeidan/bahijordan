@@ -20,13 +20,13 @@ export function MenuClient({ sections }: MenuClientProps) {
     setTimeout(() => {
       window.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }, 100);
   };
 
   return (
-    <div className="relative min-h-screen pt-(--header-h)">
+    <div className="relative min-h-screen">
       {/* Quick navigation circles - right side */}
       <nav className="fixed right-4 top-1/2 z-20 hidden -translate-y-1/2 flex-col gap-3 lg:flex">
         {validSections.map((section) => (
@@ -61,8 +61,12 @@ export function MenuClient({ sections }: MenuClientProps) {
       </header>
 
       {/* Tabs Navigation */}
-      <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-        <div className="sticky top-(--header-h) z-10 border-b border-border/50 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
+      <Tabs
+        value={activeTab}
+        onValueChange={handleTabChange}
+        className="w-full"
+      >
+        <div className="sticky top-0 z-10 border-b border-border/50 bg-secondary/60 backdrop-blur-md shadow-sm dark:bg-secondary/30">
           <div className="mx-auto max-w-5xl px-4 md:px-6">
             <div className="overflow-x-auto scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
               <TabsList className="inline-flex h-12 w-auto min-w-full items-center justify-start gap-0 bg-transparent md:w-full">
@@ -78,9 +82,7 @@ export function MenuClient({ sections }: MenuClientProps) {
                       "focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:shadow-none"
                     )}
                   >
-                    <span className="whitespace-nowrap">
-                      {section.titleEn}
-                    </span>
+                    <span className="whitespace-nowrap">{section.titleEn}</span>
                     {section.titleAr && (
                       <span
                         className="ml-2 whitespace-nowrap font-ar text-xs opacity-60"

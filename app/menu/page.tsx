@@ -9,7 +9,8 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Menu | Bahi Café",
-  description: "Explore our menu featuring fresh salads, soups, sandwiches, omelettes, desserts, specialty teas, coffee, and refreshing drinks. Carefully curated with authentic flavors.",
+  description:
+    "Explore our menu featuring fresh salads, soups, sandwiches, omelettes, desserts, specialty teas, coffee, and refreshing drinks. Carefully curated with authentic flavors.",
 };
 
 async function getMenuSections(): Promise<MenuSection[]> {
@@ -20,7 +21,7 @@ async function getMenuSections(): Promise<MenuSection[]> {
 
   const res = await fetch(url, {
     // Cache for 5 minutes, then revalidate in the background
-    next: { revalidate: 300 }
+    next: { revalidate: 300 },
   });
 
   if (!res.ok) {
