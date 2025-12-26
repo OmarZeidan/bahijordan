@@ -33,9 +33,6 @@ export default function ContactPage() {
       aria-label="Contact Bahi Café"
       className="relative overflow-hidden bg-background"
     >
-      {/* subtle texture */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.15] mix-blend-soft-light bg-[url('/images/noise.png')] bg-[length:220px]" />
-
       <div className="container-inner relative py-20 md:py-28 lg:py-32">
         {/* top label + heading */}
         <header className="mb-14 space-y-7 md:mb-16">

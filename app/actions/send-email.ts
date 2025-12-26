@@ -85,14 +85,9 @@ export async function sendEmail(prevState: unknown, formData: FormData) {
     });
 
     const subject = `Bahi · New Inquiry from ${name}`;
-    const fromDisplay = `Bahi Restaurant <${
+    const fromDisplay = `Bahi Café <${
       process.env.EMAIL_FROM || process.env.EMAIL_USER
     }>`;
-
-    // Logo URL - will use the deployed site URL, fallback to localhost for development
-    const siteUrl =
-      process.env.NEXT_PUBLIC_SITE_URL || "https://bahijordan.com";
-    const logoUrl = `${siteUrl}/logo-bahi-simple-email.png`;
 
     const html = `
   <!DOCTYPE html>
@@ -119,16 +114,14 @@ export async function sendEmail(prevState: unknown, formData: FormData) {
               box-shadow:0 4px 24px rgba(0,0,0,0.08);
             "
           >
-            <!-- Header with brand accent and logo -->
+            <!-- Header with brand accent -->
             <tr>
               <td style="background-color:${warmPaper}; padding:40px 24px; text-align:center; border-bottom:3px solid ${brandRed};">
-                <img
-                  src="${logoUrl}"
-                  alt="Bahi Logo"
-                  style="display:block; margin:0 auto 20px; max-width:100%; height:auto;"
-                />
+                <h1 style="margin:0 0 8px; color:${brandRed}; font-size:32px; font-weight:700; letter-spacing:3px;">
+                  BAHI
+                </h1>
                 <p style="margin:8px 0 0; color:${deepInk}; font-size:13px; letter-spacing:2px; text-transform:uppercase; opacity:0.7;">
-                  Restaurant · Amman
+                  Café · Amman
                 </p>
               </td>
             </tr>
@@ -226,7 +219,7 @@ export async function sendEmail(prevState: unknown, formData: FormData) {
                   <tr>
                     <td style="text-align:center;">
                       <p style="margin:0 0 8px; color:#6d5a52; font-size:12px; line-height:1.6;">
-                        This message was received via the <strong>Bahi</strong> website contact form
+                        This message was received via the <strong>Bahi Café</strong> website contact form
                       </p>
                       <p style="margin:0; color:#6d5a52; font-size:11px;">
                         <strong>Submitted:</strong> ${submittedAt} · Amman Time
@@ -246,7 +239,7 @@ export async function sendEmail(prevState: unknown, formData: FormData) {
 `;
 
     const text = [
-      `BAHI RESTAURANT`,
+      `BAHI CAFÉ`,
       `New Contact Inquiry`,
       ``,
       `Message from ${name}`,
