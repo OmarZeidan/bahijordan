@@ -89,6 +89,11 @@ export async function sendEmail(prevState: unknown, formData: FormData) {
       process.env.EMAIL_FROM || process.env.EMAIL_USER
     }>`;
 
+    // Logo URL - will use the deployed site URL, fallback to localhost for development
+    const siteUrl =
+      process.env.NEXT_PUBLIC_SITE_URL || "https://bahijordan.com";
+    const logoUrl = `${siteUrl}/logo-bahi-simple-email.png`;
+
     const html = `
   <!DOCTYPE html>
   <html lang="en">
@@ -114,12 +119,14 @@ export async function sendEmail(prevState: unknown, formData: FormData) {
               box-shadow:0 4px 24px rgba(0,0,0,0.08);
             "
           >
-            <!-- Header with brand accent -->
+            <!-- Header with brand accent and logo -->
             <tr>
               <td style="background-color:${warmPaper}; padding:40px 24px; text-align:center; border-bottom:3px solid ${brandRed};">
-                <h1 style="margin:0 0 8px; color:${brandRed}; font-size:32px; font-weight:700; letter-spacing:3px;">
-                  BAHI
-                </h1>
+                <img
+                  src="${logoUrl}"
+                  alt="Bahi Logo"
+                  style="display:block; margin:0 auto 20px; max-width:100%; height:auto;"
+                />
                 <p style="margin:8px 0 0; color:${deepInk}; font-size:13px; letter-spacing:2px; text-transform:uppercase; opacity:0.7;">
                   Café · Amman
                 </p>
