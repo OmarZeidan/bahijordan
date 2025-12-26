@@ -121,7 +121,7 @@ export default function SectionHero() {
             variants={itemVariants}
             className="font-display text-[45px]/[52px] md:text-7xl/[75px] max-w-5xl font-black tracking-tight drop-shadow lg:text-7xl/[76px]"
           >
-            Amman&apos;s golden era,&nbsp; <br className="hidden md:block" />
+            Amman&apos;s golden era, <br className="hidden md:block" />
             <span className="text-amber-200">made for now.</span>
           </motion.h1>
 
