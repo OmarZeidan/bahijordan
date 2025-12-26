@@ -54,7 +54,7 @@ export const metadata: Metadata = {
 };
 
 const footerNote =
-  "Bahi is a Shmeisani love letter to Amman’s 70s and 80s golden era—retro interiors, Levantine comfort plates, house-baked breads, and slow khader tea made for lingering.";
+  "Bahi is a Shmeisani love letter to Amman’s 70s and 80s golden era, retro interiors, Levantine comfort plates, house-baked breads, and slow khader tea made for lingering.";
 export default function RootLayout({
   children,
 }: Readonly<{
