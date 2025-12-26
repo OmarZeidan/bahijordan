@@ -22,6 +22,25 @@ export function MenuClient({ sections }: MenuClientProps) {
   const [tabsApi, setTabsApi] = useState<CarouselApi>();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showDots, setShowDots] = useState(true);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Initialize from URL parameter on mount
+  useEffect(() => {
+    if (!api || isInitialized) return;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const sectionParam = urlParams.get("section");
+    if (sectionParam) {
+      const sectionIndex = validSections.findIndex(
+        (section) => section.id === sectionParam
+      );
+      if (sectionIndex !== -1) {
+        api.scrollTo(sectionIndex);
+        tabsApi?.scrollTo(sectionIndex);
+      }
+    }
+    setIsInitialized(true);
+  }, [api, tabsApi, validSections, isInitialized]);
 
   useEffect(() => {
     if (!api) return;
@@ -32,6 +51,14 @@ export function MenuClient({ sections }: MenuClientProps) {
 
       // Sync tabs carousel to center the active tab
       tabsApi?.scrollTo(newIndex);
+
+      // Update URL with current section
+      const currentSection = validSections[newIndex];
+      if (currentSection && isInitialized) {
+        const url = new URL(window.location.href);
+        url.searchParams.set("section", currentSection.id);
+        window.history.replaceState({}, "", url.toString());
+      }
 
       // Show dots on change, then hide after 2s
       setShowDots(true);
@@ -45,7 +72,7 @@ export function MenuClient({ sections }: MenuClientProps) {
     return () => {
       api.off("select", onSelect);
     };
-  }, [api, tabsApi]);
+  }, [api, tabsApi, validSections, isInitialized]);
 
   // Global keyboard navigation
   useEffect(() => {
