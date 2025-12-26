@@ -37,22 +37,6 @@ export default async function MenuPage() {
 
   return (
     <div className="relative min-h-screen">
-      {/* Layered gradient overlays for depth */}
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--accent)/0.12),transparent_50%)]" />
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_at_bottom_left,hsl(var(--primary)/0.08),transparent_50%)]" />
-
-      {/* Premium subtle texture */}
-      <div className="pointer-events-none fixed inset-0 opacity-30 mix-blend-soft-light dark:opacity-20">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, hsl(var(--foreground)/0.05) 1px, transparent 0)",
-            backgroundSize: "24px 24px",
-          }}
-        />
-      </div>
-
       <MenuClient sections={sections} />
     </div>
   );

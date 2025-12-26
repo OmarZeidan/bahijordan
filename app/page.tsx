@@ -9,13 +9,13 @@ import SectionStory from "@/components/section-story";
 
 export default function Home() {
   return (
-    <>
+    <main className="relative min-h-screen bg-linear-to-b from-background via-secondary/35 to-background text-foreground">
       <SectionHero />
       <SectionStory />
       <SectionSpace />
       <SectionPhilosophy />
       <SectionGallery />
       <SectionConnect />
-    </>
+    </main>
   );
 }

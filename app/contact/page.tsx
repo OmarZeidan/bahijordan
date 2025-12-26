@@ -31,7 +31,7 @@ export default function ContactPage() {
   return (
     <section
       aria-label="Contact Bahi Café"
-      className="relative overflow-hidden bg-background"
+      className="relative overflow-hidden bg-linear-to-br from-amber-50/70 via-white to-primary-100/60 dark:bg-none dark:bg-background"
     >
       <div className="container-inner relative py-20 md:py-28 lg:py-32">
         {/* top label + heading */}
