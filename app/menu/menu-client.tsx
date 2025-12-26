@@ -233,7 +233,7 @@ export function MenuClient({ sections }: MenuClientProps) {
                   </div>
 
                   {/* Menu items - flat & minimal */}
-                  <div className="divide-y divide-border/70 rounded-3xl border border-border/60 bg-card/75 p-6 shadow-sm backdrop-blur md:p-8 dark:bg-card/30">
+                  <div className="divide-y divide-border/70 rounded-3xl border border-border/60 bg-card/25 p-6 shadow-sm backdrop-blur md:p-8 dark:bg-card/30">
                     {section.items.map((item, idx) => {
                       const unavailable = !item.available;
 
