@@ -36,7 +36,7 @@ export default async function MenuPage() {
   const sections = await getMenuSections();
 
   return (
-    <div className="relative min-h-screen bg-linear-to-br from-primary/5 via-accent/8 to-primary/10 dark:from-primary/10 dark:via-accent/5 dark:to-primary/8">
+    <div className="relative min-h-screen">
       {/* Layered gradient overlays for depth */}
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--accent)/0.12),transparent_50%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_at_bottom_left,hsl(var(--primary)/0.08),transparent_50%)]" />

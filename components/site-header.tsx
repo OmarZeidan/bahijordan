@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import MobileMenu from "./mobile-menu";
 import { NavLink } from "./nav-item";
 import { cn } from "@/lib/utils";
+import { SVGLogo } from "./logo-svg";
 
 export default function Header() {
   const pathname = usePathname();
@@ -73,12 +74,7 @@ export default function Header() {
               aria-label="Bahi Café — Home"
               onClick={() => setActiveId(null)}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/logo-bahi.svg"
-                alt="Bahi Café"
-                className="h-auto w-12 md:w-14"
-              />
+              <SVGLogo width={62} />
               <span className="sr-only">Bahi Café</span>
             </Link>
             <div className="hidden items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-primary-900/70 dark:text-primary-100/70 sm:flex">

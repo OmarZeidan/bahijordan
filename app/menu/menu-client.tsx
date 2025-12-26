@@ -93,92 +93,7 @@ export function MenuClient({ sections }: MenuClientProps) {
         ))}
       </nav>
 
-      {/* Professional header */}
-      <header className="relative overflow-hidden border-b border-border/40 bg-gradient-to-b from-background via-background/98 to-background/95 py-12 md:py-16">
-        {/* SVG Background Pattern */}
-        <div className="absolute inset-0">
-          <svg
-            className="h-full w-full opacity-[0.04] dark:opacity-[0.015]"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <pattern
-                id="cafe-pattern"
-                x="0"
-                y="0"
-                width="100"
-                height="100"
-                patternUnits="userSpaceOnUse"
-              >
-                {/* Coffee beans inspired organic shapes */}
-                <ellipse
-                  cx="20"
-                  cy="20"
-                  rx="3"
-                  ry="5"
-                  fill="black"
-                  transform="rotate(45 20 20)"
-                  className="dark:fill-white"
-                />
-                <ellipse
-                  cx="80"
-                  cy="40"
-                  rx="3"
-                  ry="5"
-                  fill="black"
-                  transform="rotate(-30 80 40)"
-                  className="dark:fill-white"
-                />
-                <ellipse
-                  cx="50"
-                  cy="70"
-                  rx="3"
-                  ry="5"
-                  fill="black"
-                  transform="rotate(60 50 70)"
-                  className="dark:fill-white"
-                />
-                <ellipse
-                  cx="30"
-                  cy="90"
-                  rx="3"
-                  ry="5"
-                  fill="black"
-                  transform="rotate(15 30 90)"
-                  className="dark:fill-white"
-                />
-                <ellipse
-                  cx="70"
-                  cy="85"
-                  rx="3"
-                  ry="5"
-                  fill="black"
-                  transform="rotate(-45 70 85)"
-                  className="dark:fill-white"
-                />
-                {/* Delicate connecting lines */}
-                <path
-                  d="M 20 20 Q 50 35 80 40"
-                  stroke="black"
-                  strokeWidth="0.5"
-                  fill="none"
-                  opacity="0.3"
-                  className="dark:stroke-white"
-                />
-                <circle
-                  cx="50"
-                  cy="35"
-                  r="1"
-                  fill="black"
-                  opacity="0.4"
-                  className="dark:fill-white"
-                />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#cafe-pattern)" />
-          </svg>
-        </div>
-
+      <header className="relative overflow-hidden border-b border-border/40 py-12 md:py-16">
         {/* Subtle decorative gradients */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(var(--primary-rgb,120,113,108)/0.03),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(var(--primary-rgb,120,113,108)/0.02),transparent_50%)]" />
@@ -287,7 +202,7 @@ export function MenuClient({ sections }: MenuClientProps) {
                 </div>
 
                 {/* Menu items - flat & minimal */}
-                <div className="divide-y divide-border/70 rounded-lg border border-border/40 bg-background/90 p-6 backdrop-blur-sm md:p-8">
+                <div className="divide-y divide-border/70 p-6 md:p-8 bg-white/30 dark:bg-primary/10">
                   {section.items.map((item, idx) => {
                     const unavailable = !item.available;
 
@@ -295,8 +210,7 @@ export function MenuClient({ sections }: MenuClientProps) {
                       <article
                         key={`${section.id}-${item.nameEn}-${item.itemOrder}`}
                         className={cn(
-                          "group/item -mx-2 -my-1 rounded-md px-2 py-6 transition-all duration-200",
-                          "hover:bg-primary/3 hover:shadow-sm",
+                          "group/item -mx-2 -my-1 px-2 py-6",
                           unavailable && "opacity-50",
                           idx === 0 && "pt-0"
                         )}
@@ -305,7 +219,7 @@ export function MenuClient({ sections }: MenuClientProps) {
                           {/* Left: Title & Description */}
                           <div className="min-w-0 flex-1 space-y-1.5">
                             <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-                              <h3 className="font-medium text-primary-600 dark:text-foreground">
+                              <h3 className="font-bold text-primary-600 dark:text-foreground">
                                 {item.nameEn} -
                               </h3>
                               {item.nameAr && (
@@ -363,36 +277,30 @@ export function MenuClient({ sections }: MenuClientProps) {
                     );
                   })}
                 </div>
-
-                {/* Footer - only show on last section */}
-                {currentIndex === validSections.length - 1 && (
-                  <footer className="mt-16 space-y-6 border-t border-border/40 pt-8 text-center">
-                    <p className="text-xs text-muted-foreground">
-                      All prices in Jordanian Dinar · Ask our team about
-                      allergens or dietary preferences
-                    </p>
-
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-center gap-2 text-xs font-medium uppercase tracking-wider text-foreground">
-                        <Clock className="h-3.5 w-3.5" />
-                        <span>Opening Hours</span>
-                      </div>
-                      <div className="space-y-1 text-xs text-muted-foreground">
-                        <p>Saturday – Thursday: 7:00 AM – 11:30 PM</p>
-                        <p>
-                          Friday: 7:00 AM – prayer time · After prayer – 11:30
-                          PM
-                        </p>
-                        <p>Sunday: 7:00 AM – 12:30 AM</p>
-                      </div>
-                    </div>
-                  </footer>
-                )}
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
+
+      <footer className="space-y-6 text-center bg-primary/5 py-10 dark:bg-primary/5">
+        <p className="text-xs text-muted-foreground">
+          All prices in Jordanian Dinar · Ask our team about allergens or
+          dietary preferences
+        </p>
+
+        <div className="space-y-3">
+          <div className="flex items-center justify-center gap-2 text-xs font-medium uppercase tracking-wider text-foreground">
+            <Clock className="h-3.5 w-3.5" />
+            <span>Opening Hours</span>
+          </div>
+          <div className="space-y-1 text-xs text-muted-foreground">
+            <p>Saturday – Thursday: 7:00 AM – 11:30 PM</p>
+            <p>Friday: 7:00 AM – prayer time · After prayer – 11:30 PM</p>
+            <p>Sunday: 7:00 AM – 12:30 AM</p>
+          </div>
+        </div>
+      </footer>
 
       {/* Mobile dots indicator - auto-hide */}
       <div
